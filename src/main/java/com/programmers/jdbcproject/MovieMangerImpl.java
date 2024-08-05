@@ -151,7 +151,14 @@ public class MovieMangerImpl implements MovieManager {
 
     @Override
     public void updateUser(User user) {
-
+        String SQL = "UPDATE user set nickname = ? where id = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(SQL)) {
+            pstmt.setString(1, user.getNickname());
+            pstmt.setInt(2, user.getUserId());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
