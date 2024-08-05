@@ -2,6 +2,7 @@ package com.programmers.jdbcproject;
 
 import com.programmers.jdbcproject.domain.Movie;
 import com.programmers.jdbcproject.MovieMangerImpl;
+import com.programmers.jdbcproject.domain.Review;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -44,6 +45,17 @@ public class Main {
                     case 1:
                         break;
                     case 2:
+                        // 사용자로부터 movie_id 입력 받기
+                        System.out.print("movie_id를 입력해주세요: ");
+                        int movieId = Integer.parseInt(br.readLine());
+
+                        // 입력받은 movie_id에 대한 리뷰 조회
+                        List<Review> reviews = movieManager.searchByReview(movieId);
+
+                        // 리뷰 정보 출력
+                        for (Review review : reviews) {
+                            System.out.println(review);
+                        }
                         break;
                     case 3:
                         break;
