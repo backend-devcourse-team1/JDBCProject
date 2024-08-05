@@ -21,13 +21,8 @@ public class Main {
 
 
     public static void main(String[] args) {
-        Dotenv dotenv = Dotenv.load();
-        String url = dotenv.get("URL");
-        String user = dotenv.get("USER");
-        String password = dotenv.get("PASSWORD");
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(url, user, password);
+            Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
             MovieManager movieManager = new MovieMangerImpl(connection);
             boolean loopFlag = true;
             while (loopFlag) {
@@ -70,7 +65,7 @@ public class Main {
                         break;
                 }
             }
-        }catch (ClassNotFoundException | SQLException e) {
+        }catch (SQLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             throw new RuntimeException(e);
