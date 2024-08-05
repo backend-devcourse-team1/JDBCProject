@@ -15,6 +15,11 @@ public class MovieMangerImpl implements MovieManager {
 
 
     Connection conn;
+
+    public MovieMangerImpl(Connection conn) {
+        this.conn = conn;
+    }
+
     void Connection(Connection conn){
         this.conn = conn;
     }
