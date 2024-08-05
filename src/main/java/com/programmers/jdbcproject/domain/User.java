@@ -1,4 +1,4 @@
-package com.programmers.java.jdbcproject.domain;
+package com.programmers.jdbcproject.domain;
 
 import lombok.Data;
 

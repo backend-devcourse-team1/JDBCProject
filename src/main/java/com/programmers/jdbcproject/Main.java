@@ -1,4 +1,4 @@
-package com.programmers.java.jdbcproject;
+package com.programmers.jdbcproject;
 
 public class Main {
     public static void main(String[] args) {
