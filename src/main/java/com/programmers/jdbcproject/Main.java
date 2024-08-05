@@ -22,9 +22,9 @@ public class Main {
 
     public static void main(String[] args) {
         Dotenv dotenv = Dotenv.load();
-        String url = dotenv.get("DB_URL");
-        String user = dotenv.get("DB_USER");
-        String password = dotenv.get("DB_PASSWORD");
+        String url = dotenv.get("URL");
+        String user = dotenv.get("USER");
+        String password = dotenv.get("PASSWORD");
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection(url, user, password);
