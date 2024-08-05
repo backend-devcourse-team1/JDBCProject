@@ -17,6 +17,10 @@ public class Movie {
 
 
     public Movie(String title, int rating, int audiences, String genre, String director, String cast, String synopsis, String crew, String trailer) {
+
+    }
+    public Movie(int movieId, String title, int rating, int audiences, String genre, String director, String cast, String synopsis, String crew, String trailer) {
+        this.movieId = movieId;
         this.title = title;
         this.rating = rating;
         this.audiences = audiences;

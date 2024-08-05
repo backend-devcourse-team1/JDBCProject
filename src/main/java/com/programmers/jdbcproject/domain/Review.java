@@ -14,4 +14,22 @@ public class Review {
         this.content = content;
         this.rating = rating;
     }
+    public Review(int reviewId, int movieId, int userId, String content, int rating) {
+        this.reviewId = reviewId;
+        this.movieId = movieId;
+        this.userId = userId;
+        this.content = content;
+        this.rating = rating;
+    }
+
+    @Override
+    public String toString() {
+        return "Review{" +
+                "reviewId=" + reviewId +
+                ", movieId=" + movieId +
+                ", userId=" + userId +
+                ", content='" + content + '\'' +
+                ", rating=" + rating +
+                '}';
+    }
 }
