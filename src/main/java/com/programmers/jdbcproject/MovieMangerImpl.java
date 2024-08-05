@@ -55,9 +55,40 @@ public class MovieMangerImpl implements MovieManager {
     }
 
     @Override
-    public List<Review> searchByReview(int movieId) {
-        return null;
+    public List<Review> searchByReview(int movieId){
+        String sql = "SELECT * FROM review WHERE movie_id = ?";
+        List<Review> reviewList = new ArrayList<>();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, movieId);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                reviewList.add(new Review(
+                        rs.getInt("review_id"),
+                        rs.getInt("movie_id"),
+                        rs.getInt("user_id"),
+                        rs.getString("contents"),
+                        rs.getInt("rating")
+                ));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return reviewList;
     }
+
 
     @Override
     public List<User> getUsers() {
