@@ -23,7 +23,7 @@ public interface MovieManager {
     Movie searchMovie(int movieId);
 
 //- 평점 순 조회 (종윤) orderByRating
-    List<Movie> searchReviewsByRating();
+    List<Movie> orderByRating();
 
 //- 사용자 추가 /수정 /삭제 (정원)
     void insertUser(User user);
