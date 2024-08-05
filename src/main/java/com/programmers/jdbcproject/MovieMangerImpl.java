@@ -5,7 +5,8 @@ import com.programmers.jdbcproject.domain.Movie;
 import com.programmers.jdbcproject.domain.Review;
 import com.programmers.jdbcproject.domain.User;
 
-import java.sql.Connection;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MovieMangerImpl implements MovieManager {
@@ -22,6 +23,16 @@ public class MovieMangerImpl implements MovieManager {
 
     @Override
     public List<Movie> getMovies() {
+        String SQL = "SELECT FROM movie";
+        List<Movie> movies = new ArrayList<>();
+        ResultSet rs = null;
+        try (PreparedStatement pstmt = conn.prepareStatement(SQL)){
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         return null;
     }
 
