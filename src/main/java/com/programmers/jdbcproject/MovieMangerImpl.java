@@ -5,10 +5,7 @@ import com.programmers.jdbcproject.domain.Movie;
 import com.programmers.jdbcproject.domain.Review;
 import com.programmers.jdbcproject.domain.User;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +23,35 @@ public class MovieMangerImpl implements MovieManager {
 
     @Override
     public List<Movie> getMovies() {
-        return null;
+        String SQL = "SELECT FROM movie";
+        List<Movie> movies = new ArrayList<>();
+        ResultSet rs = null;
+        try (PreparedStatement pstmt = conn.prepareStatement(SQL)){
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                movies.add(new Movie(
+                        rs.getInt("movie_id"),
+                        rs.getString("title"),
+                        rs.getInt("rating"),
+                        rs.getInt("audiences"),
+                        rs.getString("genre"),
+                        rs.getString("director"),
+                        rs.getString("cast"),
+                        rs.getString("synopsis"),
+                        rs.getString("crew"),
+                        rs.getString("trailer")
+                ));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if(rs != null) rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return movies;
     }
 
     @Override
