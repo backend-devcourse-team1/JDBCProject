@@ -5,7 +5,8 @@ import com.programmers.jdbcproject.domain.Movie;
 import com.programmers.jdbcproject.domain.Review;
 import com.programmers.jdbcproject.domain.User;
 
-import java.sql.Connection;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MovieMangerImpl implements MovieManager {
@@ -16,13 +17,41 @@ public class MovieMangerImpl implements MovieManager {
         this.conn = conn;
     }
 
-    void Connection(Connection conn){
+    void Connection(Connection conn) {
         this.conn = conn;
     }
 
     @Override
     public List<Movie> getMovies() {
-        return null;
+        String SQL = "SELECT FROM movie";
+        List<Movie> movies = new ArrayList<>();
+        ResultSet rs = null;
+        try (PreparedStatement pstmt = conn.prepareStatement(SQL)){
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                movies.add(new Movie(
+                        rs.getInt("movie_id"),
+                        rs.getString("title"),
+                        rs.getInt("rating"),
+                        rs.getInt("audiences"),
+                        rs.getString("genre"),
+                        rs.getString("director"),
+                        rs.getString("cast"),
+                        rs.getString("synopsis"),
+                        rs.getString("crew"),
+                        rs.getString("trailer")
+                ));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if(rs != null) rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return movies;
     }
 
     @Override
@@ -37,7 +66,37 @@ public class MovieMangerImpl implements MovieManager {
 
     @Override
     public List<Movie> orderByAudiences() {
-        return null;
+        String sql = "select from movie order by audiences desc";
+        List<Movie> resultList = new ArrayList<>();
+        PreparedStatement pstmt = null;
+        try {
+            pstmt = conn.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                resultList.add(new Movie(
+                        rs.getInt("movie_id"),
+                        rs.getString("title"),
+                        rs.getInt("rating"),
+                        rs.getInt("audiences"),
+                        rs.getString("genre"),
+                        rs.getString("director"),
+                        rs.getString("cast"),
+                        rs.getString("synopsis"),
+                        rs.getString("crew"),
+                        rs.getString("trailer")
+                ));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if (pstmt != null) pstmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return resultList;
     }
 
     @Override
@@ -46,23 +105,71 @@ public class MovieMangerImpl implements MovieManager {
     }
 
     @Override
-    public List<Movie> searchReviewsByRating() {
-        return null;
+    public List<Movie> orderByRating() {
+        String sql = "select from movie order by rating desc";
+        List<Movie> resultList = new ArrayList<>();
+        PreparedStatement pstmt = null;
+        try {
+            pstmt = conn.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                resultList.add(new Movie(
+                        rs.getInt("movie_id"),
+                        rs.getString("title"),
+                        rs.getInt("rating"),
+                        rs.getInt("audiences"),
+                        rs.getString("genre"),
+                        rs.getString("director"),
+                        rs.getString("cast"),
+                        rs.getString("synopsis"),
+                        rs.getString("crew"),
+                        rs.getString("trailer")
+                ));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if (pstmt != null) pstmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return resultList;
     }
 
     @Override
     public void insertUser(User user) {
-
+        String SQL = "INSERT INTO users VALUES (?, ?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement pstmt = conn.prepareStatement(SQL)){
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void updateUser(User user) {
-
+        String SQL = "UPDATE user set nickname = ? where id = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(SQL)) {
+            pstmt.setString(1, user.getNickname());
+            pstmt.setInt(2, user.getUserId());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void deleteUser(User user) {
-
+        String SQL = "DELETE FROM user WHERE id = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(SQL)){
+            pstmt.setInt(1, user.getUserId());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
