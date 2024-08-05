@@ -21,6 +21,7 @@ public class Main {
     private static final String PASSWORD = ""; // 데이터베이스 비밀번호
 
 
+
     public static void main(String[] args) {
         try {
             Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
