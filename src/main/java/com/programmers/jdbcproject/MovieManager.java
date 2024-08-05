@@ -32,11 +32,11 @@ public interface MovieManager {
 
 //- 영화 추가 /수정 /삭제 ( 종원 )
     void insertMovie(Movie movie);
-    void updateMovie(Movie movie);
-    void deleteMovie(Movie movie);
+    void updateMovie(int movieId, Movie movie);
+    void deleteMovie(String movieTitle);
 
 //- 리뷰 추가 /수정 /삭제 ( 종원 )
-    void insertReview(Review review);
-    void updateReview(Review review);
-    void deleteReview(Review review);
+    void insertReview(Review review, String nickname, String movieTitle);
+    void updateReview(String reviewContent, int reviewId);
+    void deleteReview(int reviewId);
 }

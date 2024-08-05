@@ -9,4 +9,9 @@ public class Review {
     private int userId;
     private String content;
     private int rating;
+
+    public Review(String content, int rating) {
+        this.content = content;
+        this.rating = rating;
+    }
 }
