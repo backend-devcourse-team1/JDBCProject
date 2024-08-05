@@ -29,11 +29,29 @@ public class MovieMangerImpl implements MovieManager {
         try (PreparedStatement pstmt = conn.prepareStatement(SQL)){
             rs = pstmt.executeQuery();
             while(rs.next()){
+                movies.add(new Movie(
+                        rs.getInt("movie_id"),
+                        rs.getString("title"),
+                        rs.getInt("rating"),
+                        rs.getInt("audiences"),
+                        rs.getString("genre"),
+                        rs.getString("director"),
+                        rs.getString("cast"),
+                        rs.getString("synopsis"),
+                        rs.getString("crew"),
+                        rs.getString("trailer")
+                ));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            try {
+                if(rs != null) rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-        return null;
+        return movies;
     }
 
     @Override
