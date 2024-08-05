@@ -141,17 +141,35 @@ public class MovieMangerImpl implements MovieManager {
 
     @Override
     public void insertUser(User user) {
-
+        String SQL = "INSERT INTO users VALUES (?, ?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement pstmt = conn.prepareStatement(SQL)){
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void updateUser(User user) {
-
+        String SQL = "UPDATE user set nickname = ? where id = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(SQL)) {
+            pstmt.setString(1, user.getNickname());
+            pstmt.setInt(2, user.getUserId());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void deleteUser(User user) {
-
+        String SQL = "DELETE FROM user WHERE id = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(SQL)){
+            pstmt.setInt(1, user.getUserId());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
