@@ -7,10 +7,6 @@ public class User {
     private int userId;
     private String nickname;
 
-    public User(String nickname) {
-        this.nickname = nickname;
-    }
-
     public User(String changeNickname, int id) {
         this.nickname = changeNickname;
         this.userId = id;

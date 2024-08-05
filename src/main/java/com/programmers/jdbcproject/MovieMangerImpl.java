@@ -23,7 +23,7 @@ public class MovieMangerImpl implements MovieManager {
 
     @Override
     public List<Movie> getMovies() {
-        String SQL = "SELECT FROM movie";
+        String SQL = "SELECT * FROM movie";
         List<Movie> movies = new ArrayList<>();
         ResultSet rs = null;
         try (PreparedStatement pstmt = conn.prepareStatement(SQL)){
@@ -171,10 +171,10 @@ public class MovieMangerImpl implements MovieManager {
     }
 
     @Override
-    public void insertUser(User user) {
-        String SQL = "INSERT INTO users VALUES (?)";
+    public void insertUser(String nickname) {
+        String SQL = "INSERT INTO user(nickname) VALUES (?)";
         try (PreparedStatement pstmt = conn.prepareStatement(SQL)) {
-            pstmt.setString(1, user.getNickname());
+            pstmt.setString(1, nickname);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -183,7 +183,7 @@ public class MovieMangerImpl implements MovieManager {
 
     @Override
     public void updateUser(User user) {
-        String SQL = "UPDATE user set nickname = ? where id = ?";
+        String SQL = "UPDATE user set nickname = ? where user_id = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(SQL)) {
             pstmt.setString(1, user.getNickname());
             pstmt.setInt(2, user.getUserId());
@@ -195,7 +195,7 @@ public class MovieMangerImpl implements MovieManager {
 
     @Override
     public void deleteUser(int id) {
-        String SQL = "DELETE FROM user WHERE id = ?";
+        String SQL = "DELETE FROM user WHERE user_id = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(SQL)){
             pstmt.setInt(1, id);
             pstmt.executeUpdate();

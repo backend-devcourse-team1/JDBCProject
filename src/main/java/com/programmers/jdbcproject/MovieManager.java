@@ -26,7 +26,7 @@ public interface MovieManager {
     List<Movie> orderByRating();
 
 //- 사용자 추가 /수정 /삭제 (정원)
-    void insertUser(User user);
+    void insertUser(String nickname);
     void updateUser(User user);
     void deleteUser(int id);
 

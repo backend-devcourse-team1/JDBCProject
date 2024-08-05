@@ -77,10 +77,10 @@ public class Main {
                             case 1:
                                 System.out.println("닉네임을 입력해주세요");
                                 String nickname = br.readLine();
-                                movieManager.insertUser(new User(nickname));
+                                movieManager.insertUser(nickname);
                                 break;
                             case 2:
-                                System.out.println("변경할 닉네임과 아이디를 입력해주세요");
+                                System.out.println("변경할 닉네임과 아이디를 한 줄씩 입력해주세요");
                                 String changeNickname = br.readLine();
                                 int changeId = Integer.parseInt(br.readLine());
                                 movieManager.updateUser(new User(changeNickname, changeId));
