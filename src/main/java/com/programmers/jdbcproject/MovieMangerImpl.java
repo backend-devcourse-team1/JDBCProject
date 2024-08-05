@@ -16,15 +16,10 @@ public class MovieMangerImpl implements MovieManager {
 
     Connection conn;
 
-
-//    MovieMangerImpl(Connection conn) {
-//    public MovieMangerImpl(Connection conn) {
-//        this.conn = conn;
-//    }
-
-    void Connection(Connection conn) {
+    MovieMangerImpl(Connection conn) {
         this.conn = conn;
     }
+
 
     @Override
     public List<Movie> getMovies() {
