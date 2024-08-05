@@ -1,10 +1,10 @@
 package com.programmers.jdbcproject;
 
+
 import com.programmers.jdbcproject.domain.Movie;
-import com.programmers.jdbcproject.MovieMangerImpl;
 import com.programmers.jdbcproject.domain.Review;
 import com.programmers.jdbcproject.domain.User;
-
+import io.github.cdimascio.dotenv.Dotenv;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,14 +13,15 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
-import java.util.StringTokenizer;
+
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    private static final String URL = "jdbc:mysql://127.0.0.1:3306/";
-    private static final String USER = ""; // 데이터베이스 사용자명
-    private static final String PASSWORD = ""; // 데이터베이스 비밀번호
+    private static final Dotenv dotEnv = Dotenv.load();
+    private static final String URL = dotEnv.get("DB_URL");
+    private static final String USER = dotEnv.get("DB_USER"); // 데이터베이스 사용자명
+    private static final String PASSWORD = dotEnv.get("DB_PASSWORD"); // 데이터베이스 비밀번호
 
     private static final Scanner sc = new Scanner(System.in);
 
@@ -65,12 +66,39 @@ public class Main {
                         }
                         break;
                     case 3:
+                        List<User> users = movieManager.getUsers();
+
+                        users.stream()
+                                .forEach(System.out::println);
                         break;
+                        //관객 순 조회하기
                     case 4:
+                        List<Movie> movies1 = movieManager.orderByAudiences();
+
+                        movies1.stream()
+                                .forEach(System.out::println);
                         break;
+                        //영화 조회하기
                     case 5:
+                        // 사용자로부터 movie_id 입력 받기
+                        System.out.print("movie_id를 입력해주세요: ");
+                        int movieIdFor5 = Integer.parseInt(br.readLine());
+
+                        Movie movieFor5 = movieManager.searchMovie(movieIdFor5);
+
+                        if (movieFor5 != null) {
+                            System.out.println(movieFor5.toString());
+                        } else {
+                            System.out.println("Movie not found with ID: " + movieIdFor5);
+                        }
                         break;
+
+                    //평점 순 조회하기
                     case 6:
+                        List<Movie> moviesFor6 = movieManager.orderByRating();
+
+                        moviesFor6.stream()
+                                .forEach(System.out::println);
                         break;
                     case 7:
                         System.out.println("1. 사용자 추가 2. 닉네임 변경 3. 사용자 삭제");
@@ -132,8 +160,9 @@ public class Main {
                             System.out.println("Number Error");
                         }
                         break;
+                        // 프로그램 종료하기
                     case 10:
-                        break;
+                        return;
                     default:
                         break;
                 }

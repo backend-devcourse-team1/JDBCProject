@@ -1,8 +1,12 @@
 package com.programmers.jdbcproject.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Movie {
     private int movieId;
     private String title;
@@ -15,12 +19,8 @@ public class Movie {
     private String crew;
     private String trailer;
 
-
+    // 수정된 생성자
     public Movie(String title, int rating, int audiences, String genre, String director, String cast, String synopsis, String crew, String trailer) {
-
-    }
-    public Movie(int movieId, String title, int rating, int audiences, String genre, String director, String cast, String synopsis, String crew, String trailer) {
-        this.movieId = movieId;
         this.title = title;
         this.rating = rating;
         this.audiences = audiences;
@@ -32,3 +32,4 @@ public class Movie {
         this.trailer = trailer;
     }
 }
+
