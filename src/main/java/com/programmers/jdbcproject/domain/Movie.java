@@ -14,4 +14,17 @@ public class Movie {
     private String synopsis;
     private String crew;
     private String trailer;
+
+    public Movie(int movieId, String title, int rating, int audiences, String genre, String director, String cast, String synopsis, String crew, String trailer) {
+        this.movieId = movieId;
+        this.title = title;
+        this.rating = rating;
+        this.audiences = audiences;
+        this.genre = genre;
+        this.director = director;
+        this.cast = cast;
+        this.synopsis = synopsis;
+        this.crew = crew;
+        this.trailer = trailer;
+    }
 }
