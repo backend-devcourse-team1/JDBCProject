@@ -10,6 +10,10 @@ public class Review {
     private String content;
     private int rating;
 
+    public Review(String content, int rating) {
+        this.content = content;
+        this.rating = rating;
+    }
     public Review(int reviewId, int movieId, int userId, String content, int rating) {
         this.reviewId = reviewId;
         this.movieId = movieId;
