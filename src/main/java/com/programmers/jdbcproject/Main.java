@@ -3,6 +3,7 @@ package com.programmers.jdbcproject;
 import com.programmers.jdbcproject.domain.Movie;
 import com.programmers.jdbcproject.MovieMangerImpl;
 import com.programmers.jdbcproject.domain.Review;
+import com.programmers.jdbcproject.domain.User;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,9 +18,9 @@ import java.util.StringTokenizer;
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    private static final String URL = "jdbc:mysql://localhost:3306/workshop";
-    private static final String USER = "root"; // 데이터베이스 사용자명
-    private static final String PASSWORD = "20190619"; // 데이터베이스 비밀번호
+    private static final String URL = "jdbc:mysql://127.0.0.1:3306/";
+    private static final String USER = ""; // 데이터베이스 사용자명
+    private static final String PASSWORD = ""; // 데이터베이스 비밀번호
 
     private static final Scanner sc = new Scanner(System.in);
 
@@ -45,6 +46,10 @@ public class Main {
                 List<Movie> movie;
                 switch (type){
                     case 1:
+                        List<Movie> movies = movieManager.getMovies();
+                        for (Movie getMovie : movies) {
+                            System.out.println(getMovie);
+                        }
                         break;
                     case 2:
                         // 사용자로부터 movie_id 입력 받기
@@ -68,6 +73,29 @@ public class Main {
                     case 6:
                         break;
                     case 7:
+                        System.out.println("1. 사용자 추가 2. 닉네임 변경 3. 사용자 삭제");
+                        int userMode = Integer.parseInt(br.readLine());
+                        switch (userMode) {
+                            case 1:
+                                System.out.println("닉네임을 입력해주세요");
+                                String nickname = br.readLine();
+                                movieManager.insertUser(nickname);
+                                break;
+                            case 2:
+                                System.out.println("변경할 닉네임과 아이디를 한 줄씩 입력해주세요");
+                                String changeNickname = br.readLine();
+                                int changeId = Integer.parseInt(br.readLine());
+                                movieManager.updateUser(new User(changeNickname, changeId));
+                                break;
+                            case 3:
+                                System.out.println("삭제할 아이디를 입력해주세요");
+                                int deleteId = Integer.parseInt(br.readLine());
+                                movieManager.deleteUser(deleteId);
+                                System.out.println("삭제 완료 되었습니다");
+                                break;
+                            default:
+                                break;
+                        }
                         break;
                     case 8:
                         System.out.println("Add Movie : 1 | Delete Movie : 2 | Update Movie : 3");

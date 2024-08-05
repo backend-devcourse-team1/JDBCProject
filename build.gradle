@@ -18,6 +18,8 @@ dependencies {
     // MySQL JDBC 드라이버 의존성 추가
     implementation 'mysql:mysql-connector-java:8.0.32'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+    implementation 'mysql:mysql-connector-java:8.0.30'
 }
 
 test {

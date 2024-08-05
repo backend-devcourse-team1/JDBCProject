@@ -6,4 +6,9 @@ import lombok.Data;
 public class User {
     private int userId;
     private String nickname;
+
+    public User(String changeNickname, int id) {
+        this.nickname = changeNickname;
+        this.userId = id;
+    }
 }
