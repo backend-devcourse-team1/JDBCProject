@@ -141,7 +141,12 @@ public class MovieMangerImpl implements MovieManager {
 
     @Override
     public void insertUser(User user) {
-
+        String SQL = "INSERT INTO users VALUES (?, ?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement pstmt = conn.prepareStatement(SQL)){
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
