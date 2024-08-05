@@ -80,8 +80,16 @@ public class Main {
                                 movieManager.insertUser(new User(nickname));
                                 break;
                             case 2:
+                                System.out.println("변경할 닉네임과 아이디를 입력해주세요");
+                                String changeNickname = br.readLine();
+                                int changeId = Integer.parseInt(br.readLine());
+                                movieManager.updateUser(new User(changeNickname, changeId));
                                 break;
                             case 3:
+                                System.out.println("삭제할 아이디를 입력해주세요");
+                                int deleteId = Integer.parseInt(br.readLine());
+                                movieManager.deleteUser(deleteId);
+                                System.out.println("삭제 완료 되었습니다");
                                 break;
                             default:
                                 break;

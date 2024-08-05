@@ -28,7 +28,7 @@ public interface MovieManager {
 //- 사용자 추가 /수정 /삭제 (정원)
     void insertUser(User user);
     void updateUser(User user);
-    void deleteUser(User user);
+    void deleteUser(int id);
 
 //- 영화 추가 /수정 /삭제 ( 종원 )
     void insertMovie(Movie movie);

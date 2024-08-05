@@ -194,10 +194,10 @@ public class MovieMangerImpl implements MovieManager {
     }
 
     @Override
-    public void deleteUser(User user) {
+    public void deleteUser(int id) {
         String SQL = "DELETE FROM user WHERE id = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(SQL)){
-            pstmt.setInt(1, user.getUserId());
+            pstmt.setInt(1, id);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
