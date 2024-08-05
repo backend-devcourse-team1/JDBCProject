@@ -1,14 +1,17 @@
-package com.programmers.jdbcproject.domain;
+package com.programmers.jdbcproject;
 
 import com.programmers.jdbcproject.MovieManager;
+import com.programmers.jdbcproject.domain.Movie;
+import com.programmers.jdbcproject.domain.Review;
+import com.programmers.jdbcproject.domain.User;
 
 import java.sql.Connection;
 import java.util.List;
 
 public class MovieMangerImpl implements MovieManager {
-    private static final String URL = "jdbc:mysql://localhost:3306/workshop2";
+    private static final String URL = "jdbc:mysql://localhost:3306/";
     private static final String USER = "root"; // 데이터베이스 사용자명
-    private static final String PASSWORD = "20190619"; // 데이터베이스 비밀번호
+    private static final String PASSWORD = ""; // 데이터베이스 비밀번호
 
 
     Connection conn;
