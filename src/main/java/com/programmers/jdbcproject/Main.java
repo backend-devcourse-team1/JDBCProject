@@ -16,9 +16,9 @@ import java.util.StringTokenizer;
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    private static final String URL = "jdbc:mysql://localhost:3306/";
-    private static final String USER = ""; // 데이터베이스 사용자명
-    private static final String PASSWORD = ""; // 데이터베이스 비밀번호
+    private static final String URL = "jdbc:mysql://127.0.0.1:3306/moviereview";
+    private static final String USER = "root"; // 데이터베이스 사용자명
+    private static final String PASSWORD = "0000"; // 데이터베이스 비밀번호
 
 
     public static void main(String[] args) {
@@ -43,6 +43,10 @@ public class Main {
                 List<Movie> movie;
                 switch (type){
                     case 1:
+                        List<Movie> movies = movieManager.getMovies();
+                        for (Movie getMovie : movies) {
+                            System.out.println(getMovie);
+                        }
                         break;
                     case 2:
                         // 사용자로부터 movie_id 입력 받기
