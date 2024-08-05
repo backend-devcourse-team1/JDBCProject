@@ -3,6 +3,7 @@ package com.programmers.jdbcproject;
 import com.programmers.jdbcproject.domain.Movie;
 import com.programmers.jdbcproject.MovieMangerImpl;
 import com.programmers.jdbcproject.domain.Review;
+import com.programmers.jdbcproject.domain.User;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -70,6 +71,21 @@ public class Main {
                     case 6:
                         break;
                     case 7:
+                        System.out.println("1. 사용자 추가 2. 닉네임 변경 3. 사용자 삭제");
+                        int userMode = Integer.parseInt(br.readLine());
+                        switch (userMode) {
+                            case 1:
+                                System.out.println("닉네임을 입력해주세요");
+                                String nickname = br.readLine();
+                                movieManager.insertUser(new User(nickname));
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                            default:
+                                break;
+                        }
                         break;
                     case 8:
                         break;
