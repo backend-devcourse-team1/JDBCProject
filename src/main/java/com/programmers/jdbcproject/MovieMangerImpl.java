@@ -90,9 +90,32 @@ public class MovieMangerImpl implements MovieManager {
     }
 
 
-    @Override
+    @Override // 이거
     public List<User> getUsers() {
-        return null;
+        String sql = "SELECT FROM user";
+        List<User> users = new ArrayList<>();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try{
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                users.add(new User(
+                        rs.getInt("user_id"),
+                        rs.getString("nickname")
+                ));
+            }
+        } catch(SQLException e){
+            throw new RuntimeException(e);
+        }finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return users;
     }
 
     @Override
@@ -132,7 +155,42 @@ public class MovieMangerImpl implements MovieManager {
 
     @Override
     public Movie searchMovie(int movieId) {
-        return null;
+        String sql = "SELECT * FROM movie WHERE movie_id = ?";
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        Movie movie = null;
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, movieId);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                movie = new Movie(
+                        rs.getInt("movie_id"),
+                        rs.getString("title"),
+                        rs.getInt("rating"),
+                        rs.getInt("audiences"),
+                        rs.getString("genre"),
+                        rs.getString("director"),
+                        rs.getString("cast"),
+                        rs.getString("synopsis"),
+                        rs.getString("crew"),
+                        rs.getString("trailer")
+                );
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return movie;
     }
 
     @Override
