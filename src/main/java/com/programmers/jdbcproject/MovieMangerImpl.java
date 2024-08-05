@@ -9,10 +9,6 @@ import java.sql.Connection;
 import java.util.List;
 
 public class MovieMangerImpl implements MovieManager {
-    private static final String URL = "jdbc:mysql://localhost:3306/";
-    private static final String USER = "root"; // 데이터베이스 사용자명
-    private static final String PASSWORD = ""; // 데이터베이스 비밀번호
-
 
     Connection conn;
 
