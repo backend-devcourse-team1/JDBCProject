@@ -9,8 +9,9 @@ public class User {
     private int userId;
     private String nickname;
 
-    public User(String changeNickname, int id) {
-        this.nickname = changeNickname;
-        this.userId = id;
+    @Override
+    public String toString() {
+        return "userId=[" + userId + ']' +
+                ", nickname=[" + nickname + ']';
     }
 }

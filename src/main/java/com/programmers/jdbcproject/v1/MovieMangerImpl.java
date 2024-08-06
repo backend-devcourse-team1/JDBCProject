@@ -1,4 +1,4 @@
-package com.programmers.jdbcproject;
+package com.programmers.jdbcproject.v1;
 
 import com.programmers.jdbcproject.domain.Movie;
 import com.programmers.jdbcproject.domain.Review;
@@ -16,7 +16,7 @@ public class MovieMangerImpl implements MovieManager {
 
     private Connection conn;
 
-    MovieMangerImpl(Connection conn) {
+    public MovieMangerImpl(Connection conn) {
         this.conn = conn;
     }
 

@@ -24,12 +24,9 @@ public class Review {
 
     @Override
     public String toString() {
-        return "Review{" +
-                "reviewId=" + reviewId +
-                ", movieId=" + movieId +
-                ", userId=" + userId +
-                ", content='" + content + '\'' +
-                ", rating=" + rating +
-                '}';
+        return "movieId=[" + movieId + ']' +
+                ", userId=[" + userId + ']' +
+                ", content=[" + content + ']' +
+                ", rating=[" + rating + ']';
     }
 }

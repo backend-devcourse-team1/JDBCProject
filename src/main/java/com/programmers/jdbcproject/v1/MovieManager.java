@@ -1,4 +1,4 @@
-package com.programmers.jdbcproject;
+package com.programmers.jdbcproject.v1;
 
 import com.programmers.jdbcproject.domain.Movie;
 import com.programmers.jdbcproject.domain.Review;

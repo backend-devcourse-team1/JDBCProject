@@ -31,5 +31,19 @@ public class Movie {
         this.crew = crew;
         this.trailer = trailer;
     }
+
+    @Override
+    public String toString() {
+        return "movieId=[" + movieId + ']' +
+                ", title=[" + title + ']' +
+                ", rating=[" + rating + ']' +
+                ", audiences=[" + audiences + ']' +
+                ", genre=[" + genre + ']' +
+                ", director=[" + director + ']' +
+                ", cast=[" + cast + ']' +
+                ", synopsis=[" + synopsis + ']' +
+                ", crew=[" + crew + ']' +
+                ", trailer=[" + trailer + ']';
+    }
 }
 
