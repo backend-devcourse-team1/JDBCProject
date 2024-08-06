@@ -38,6 +38,8 @@
 
 ## 조회
 ![select1](https://github.com/user-attachments/assets/63c9ca1d-0d69-4ead-ba44-ed5823e3af7b)
+![Untitled](https://github.com/user-attachments/assets/fae5b837-b3dd-4a34-986e-0d2b79944c2b)
+
 
 <br>
 </br>
