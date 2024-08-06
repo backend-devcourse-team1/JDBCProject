@@ -35,3 +35,30 @@
 </br>
 
 # ✅ Test
+
+## 조회
+![select1](https://github.com/user-attachments/assets/63c9ca1d-0d69-4ead-ba44-ed5823e3af7b)
+
+<br>
+</br>
+
+## 추가
+![insert1](https://github.com/user-attachments/assets/1ee3d7c1-4318-4eb9-9be7-22b1eb36873b)
+![insert1](https://github.com/user-attachments/assets/d6339a53-41b0-41d6-9ee7-aa5ae93125fb)
+![insert4](https://github.com/user-attachments/assets/b2340883-735d-4f84-af56-cdb0d926089a)
+![insert3](https://github.com/user-attachments/assets/02de7d96-46dd-49f8-9540-52362dec106c)
+
+<br>
+</br>
+
+## 수정
+
+![insert4](https://github.com/user-attachments/assets/b2340883-735d-4f84-af56-cdb0d926089a)
+![update2](https://github.com/user-attachments/assets/4c758f2d-4899-475b-8803-82dc162de047)
+
+
+## 삭제
+
+![delete1](https://github.com/user-attachments/assets/86cb3041-c1e6-43b1-9953-6194d115f922)
+![delete2](https://github.com/user-attachments/assets/7d3a63b0-5d63-409a-9f29-b3d4e60a3286)
+
